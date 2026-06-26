@@ -16,7 +16,8 @@ import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/Ani
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import ServicesShowcase from "@/components/ServicesShowcase";
 import HeroSlider from "@/components/HeroSlider";
-import MapZone from "@/components/MapZone";
+import dynamic from "next/dynamic";
+const MapZone = dynamic(() => import("@/components/MapZone"), { ssr: false });
 
 const stats = [
   { value: "2022", label: "Année de création" },
