@@ -72,7 +72,7 @@ const services = [
 const communes = [
   // Haute-Saône (70)
   "Champagney (70)", "Ronchamp (70)", "Luxeuil-les-Bains (70)", "Lure (70)", "Vesoul (70)",
-  "Gray (70)", "Héricourt (70)", "Jussey (70)", "Faverney (70)", "Port-sur-Saône (70)",
+  "Gray (70)", "Héricourt (70)", "Jussey (70)", "Faverney (70)", "Port-sur-Saône (70)", "Étobon (70)",
   // Territoire de Belfort (90)
   "Belfort (90)", "Delle (90)", "Giromagny (90)", "Valdoie (90)", "Bavilliers (90)",
   "Beaucourt (90)", "Bourogne (90)", "Châtenois-les-Forges (90)", "Danjoutin (90)",
@@ -115,8 +115,8 @@ function CommuneCombobox({
 
   const filtered = query.length >= 2
     ? communes.filter((c) =>
-        c.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
-          .includes(query.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""))
+        c.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+          .includes(query.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
       ).slice(0, 8)
     : [];
 
@@ -252,7 +252,7 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Devis gratuit — Charpente & Couverture"
-        subtitle="Obtenez un devis gratuit auprès de votre artisan couvreur-charpentier à Champagney (70). Réponse sous 24h."
+        subtitle="Obtenez un devis gratuit auprès de votre artisan couvreur-charpentier à Champagney (70). Réponse sous 48h."
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
         bgImage="/galerie/bardage-05.jpg"
       />
@@ -304,7 +304,7 @@ export default function ContactPage() {
                     Demande de devis gratuit
                   </h2>
                   <p className="text-text-muted text-sm mb-7">
-                    Remplissez ce formulaire et nous vous recontactons sous 24h.
+                    Remplissez ce formulaire et nous vous recontactons sous 48h.
                   </p>
 
                   <AnimatePresence mode="wait">
